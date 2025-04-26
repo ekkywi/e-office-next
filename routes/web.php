@@ -8,3 +8,4 @@ Route::get('/', function () {
 
 Route::get('/eof-dashboard', [App\Http\Controllers\Main\Navigation::class, 'showEofDashboard'])->name('eof-dashboard');
 Route::get('/eof-application', [App\Http\Controllers\Main\Navigation::class, 'showEofApplication'])->name('eof-application');
+Route::get('/eof-setting', [App\Http\Controllers\Main\Navigation::class, 'showEofSetting'])->name('eof-setting');

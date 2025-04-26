@@ -16,4 +16,9 @@ class Navigation extends Controller
     {
         return view('content.eof-application');
     }
+
+    public function showEofSetting()
+    {
+        return view('content.eof-setting');
+    }
 }
