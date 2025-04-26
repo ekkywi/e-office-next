@@ -11,4 +11,9 @@ class Navigation extends Controller
     {
         return view('content.eof-dashboard');
     }
+
+    public function showEofApplication()
+    {
+        return view('content.eof-application');
+    }
 }
