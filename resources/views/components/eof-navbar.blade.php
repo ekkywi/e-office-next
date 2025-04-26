@@ -84,8 +84,8 @@
                     <li class="nav-item {{ Request::is("eof-dashboard") ? "active" : "" }}"><a class="nav-link" href="{{ url("eof-dashboard") }}"><i class="fa fa-rocket"></i><span>Dashboard</span></a></li>
                     <li class="nav-item {{ Request::is("eof-application") ? "active" : "" }}"><a class="nav-link" href="{{ url("eof-application") }}"><i class="fa fa-fire-flame-curved"></i><span>Aplikasi</span></a></li>
                     <li class="nav-item {{ Request::is("eof-setting") || Request::is("eof-setting/*") ? "active" : "" }}"><a class="nav-link" href="{{ url("eof-setting") }}"><i class="fa fa-cog"></i><span>Pengaturan</span></a></li>
-                    {{-- <li class="nav-item {{ Request::is("bantuan") || Request::is("bantuan/*") ? "active" : "" }}"><a class="nav-link" href="{{ url("bantuan") }}"><i class="fa fa-circle-question"></i><span>Bantuan</span></a></li>
-                    <li class="nav-item {{ Request::is("maintenance") || Request::is("maintenance/*") ? "active" : "" }}"><a class="nav-link" href="{{ url("maintenance") }}"><i class="fa fa-wrench"></i><span>Maintenance</span></a></li> --}}
+                    <li class="nav-item {{ Request::is("eof-help") || Request::is("eof-help/*") ? "active" : "" }}"><a class="nav-link" href="{{ url("eof-help") }}"><i class="fa fa-circle-question"></i><span>Bantuan</span></a></li>
+                    {{-- <li class="nav-item {{ Request::is("maintenance") || Request::is("maintenance/*") ? "active" : "" }}"><a class="nav-link" href="{{ url("maintenance") }}"><i class="fa fa-wrench"></i><span>Maintenance</span></a></li> --}}
                 </ul>
             </div>
         </nav>
