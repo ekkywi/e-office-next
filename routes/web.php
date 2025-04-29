@@ -14,4 +14,6 @@ Route::get('/eof-help', [App\Http\Controllers\Main\Navigation::class, 'showEofHe
 Route::prefix('eof-maintenance')->name('eof-maintenance')->group(function () {
     Route::get('/', [App\Http\Controllers\Main\Navigation::class, 'showEofMaintenance'])->name('eof-maintenance');
     Route::get('/account', [App\Http\Controllers\Main\Navigation::class, 'showEofAccount'])->name('eof-account');
+    Route::get('/organization', [App\Http\Controllers\Main\Navigation::class, 'showEofOrganization'])->name('eof-organization');
+    Route::get('/organization', [App\Http\Controllers\Main\Navigation::class, 'showEofOrganization'])->name('eof-organization');
 });

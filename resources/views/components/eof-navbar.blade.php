@@ -79,7 +79,7 @@
             </li>
         </ul>
         <nav class="navbar navbar-secondary navbar-expand-lg">
-            <div class="container">
+            <div class="container d-flex justify-content-center">
                 <ul class="navbar-nav">
                     <li class="nav-item {{ Request::is("eof-dashboard") ? "active" : "" }}"><a class="nav-link" href="{{ url("eof-dashboard") }}"><i class="fa fa-rocket"></i><span>Dashboard</span></a></li>
                     <li class="nav-item {{ Request::is("eof-application") ? "active" : "" }}"><a class="nav-link" href="{{ url("eof-application") }}"><i class="fa fa-fire-flame-curved"></i><span>Aplikasi</span></a></li>

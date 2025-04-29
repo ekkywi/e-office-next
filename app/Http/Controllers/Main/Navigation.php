@@ -36,4 +36,10 @@ class Navigation extends Controller
     {
         return view('content.eof-account');
     }
+
+
+    public function showEofOrganization()
+    {
+        return view('content.eof-organization');
+    }
 }
