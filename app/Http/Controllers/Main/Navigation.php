@@ -26,4 +26,9 @@ class Navigation extends Controller
     {
         return view('content.eof-help');
     }
+
+    public function showEofMaintenance()
+    {
+        return view('content.eof-maintenance');
+    }
 }
