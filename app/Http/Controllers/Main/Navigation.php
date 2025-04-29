@@ -7,6 +7,11 @@ use Illuminate\Http\Request;
 
 class Navigation extends Controller
 {
+    public function showLogin()
+    {
+        return view('content.login');
+    }
+
     public function showEofDashboard()
     {
         return view('content.eof-dashboard');
