@@ -9,9 +9,9 @@
 
                 <div class="col-lg-3 col-md-6 col-sm-12">
                     <div class="card card-menu">
-                        <a class="card-body text-center" href="#">
+                        <a class="card-body text-center" href="{{ url("eof-maintenance/account") }}">
                             <i class="fas fa-user-cog custom-icon-size mb-3"></i>
-                            <h5 class="card-title">Pengguna</h5>
+                            <h5 class="card-title">Akun</h5>
                         </a>
                     </div>
                 </div>
@@ -19,44 +19,8 @@
                 <div class="col-lg-3 col-md-6 col-sm-12">
                     <div class="card card-menu">
                         <a class="card-body text-center" href="#">
-                            <i class="fas fa-sitemap custom-icon-size mb-3"></i>
-                            <h5 class="card-title">Divisi</h5>
-                        </a>
-                    </div>
-                </div>
-
-                <div class="col-lg-3 col-md-6 col-sm-12">
-                    <div class="card card-menu">
-                        <a class="card-body text-center" href="#">
-                            <i class="fas fa-building custom-icon-size mb-3"></i>
-                            <h5 class="card-title">Bagian</h5>
-                        </a>
-                    </div>
-                </div>
-
-                <div class="col-lg-3 col-md-6 col-sm-12">
-                    <div class="card card-menu">
-                        <a class="card-body text-center" href="#">
-                            <i class="fas fa-briefcase custom-icon-size mb-3"></i>
-                            <h5 class="card-title">Jabatan</h5>
-                        </a>
-                    </div>
-                </div>
-
-                <div class="col-lg-3 col-md-6 col-sm-12">
-                    <div class="card card-menu">
-                        <a class="card-body text-center" href="#">
-                            <i class="fas fa-user-check custom-icon-size mb-3"></i>
-                            <h5 class="card-title">Aktivasi</h5>
-                        </a>
-                    </div>
-                </div>
-
-                <div class="col-lg-3 col-md-6 col-sm-12">
-                    <div class="card card-menu">
-                        <a class="card-body text-center" href="#">
-                            <i class="fas fa-key custom-icon-size mb-3"></i>
-                            <h5 class="card-title">Token</h5>
+                            <i class="fas fa-people-group custom-icon-size mb-3"></i>
+                            <h5 class="card-title">Organisasi</h5>
                         </a>
                     </div>
                 </div>

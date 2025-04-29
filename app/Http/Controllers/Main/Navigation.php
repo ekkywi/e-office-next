@@ -31,4 +31,9 @@ class Navigation extends Controller
     {
         return view('content.eof-maintenance');
     }
+
+    public function showEofAccount()
+    {
+        return view('content.eof-account');
+    }
 }

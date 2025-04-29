@@ -10,4 +10,8 @@ Route::get('/eof-dashboard', [App\Http\Controllers\Main\Navigation::class, 'show
 Route::get('/eof-application', [App\Http\Controllers\Main\Navigation::class, 'showEofApplication'])->name('eof-application');
 Route::get('/eof-setting', [App\Http\Controllers\Main\Navigation::class, 'showEofSetting'])->name('eof-setting');
 Route::get('/eof-help', [App\Http\Controllers\Main\Navigation::class, 'showEofHelp'])->name('eof-help');
-Route::get('/eof-maintenance', [App\Http\Controllers\Main\Navigation::class, 'showEofMaintenance'])->name('eof-maintenance');
+
+Route::prefix('eof-maintenance')->name('eof-maintenance')->group(function () {
+    Route::get('/', [App\Http\Controllers\Main\Navigation::class, 'showEofMaintenance'])->name('eof-maintenance');
+    Route::get('/account', [App\Http\Controllers\Main\Navigation::class, 'showEofAccount'])->name('eof-account');
+});
