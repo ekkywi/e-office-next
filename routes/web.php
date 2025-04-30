@@ -22,6 +22,7 @@ Route::prefix('eof')->name('eof')->group(function () {
             Route::get('/', [App\Http\Controllers\Main\Navigation::class, 'showEofOrganization'])->name('organization');
             Route::get('/division', [App\Http\Controllers\Main\Navigation::class, 'showEofDivision'])->name('division');
             Route::get('/section', [App\Http\Controllers\Main\Navigation::class, 'showEofSection'])->name('section');
+            Route::get('/position', [App\Http\Controllers\Main\Navigation::class, 'showEofPosition'])->name('position');
         });
     });
 });
