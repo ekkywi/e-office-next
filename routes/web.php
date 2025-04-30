@@ -16,7 +16,12 @@ Route::prefix('eof')->name('eof')->group(function () {
     Route::get('/maintenance', [App\Http\Controllers\Main\Navigation::class, 'showEofMaintenance'])->name('maintenance');
 
     Route::prefix('maintenance')->name('maintenance.')->group(function () {
-        Route::get('/account', [App\Http\Controllers\Main\Navigation::class, 'showEofAccount'])->name('account');
+        Route::prefix('account')->name('account.')->group(function () {
+            Route::get('/', [App\Http\Controllers\Main\Navigation::class, 'showEofAccount'])->name('account');
+            Route::get('/user', [App\Http\Controllers\Main\Navigation::class, 'showEofUser'])->name('user');
+            Route::get('/role', [App\Http\Controllers\Main\Navigation::class, 'showEofRole'])->name('role');
+            Route::get('/permission', [App\Http\Controllers\Main\Navigation::class, 'showEofPermission'])->name('permission');
+        });
 
         Route::prefix('organization')->name('organization.')->group(function () {
             Route::get('/', [App\Http\Controllers\Main\Navigation::class, 'showEofOrganization'])->name('organization');

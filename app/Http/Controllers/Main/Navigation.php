@@ -61,4 +61,9 @@ class Navigation extends Controller
     {
         return view('content.eof-position');
     }
+
+    public function showEofUser()
+    {
+        return view('content.eof-user');
+    }
 }
