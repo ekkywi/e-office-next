@@ -47,4 +47,9 @@ class Navigation extends Controller
     {
         return view('content.eof-organization');
     }
+
+    public function showEofDivision()
+    {
+        return view('content.eof-division');
+    }
 }

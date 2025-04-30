@@ -18,7 +18,7 @@
 
                 <div class="col-lg-3 col-md-6 col-sm-12">
                     <div class="card card-menu">
-                        <a class="card-body text-center" href="{{ url("eof/maintenance/divisi") }}">
+                        <a class="card-body text-center" href="{{ url("eof/maintenance/organization/division") }}">
                             <i class="fas fa-sitemap custom-icon-size mb-3"></i>
                             <h5 class="card-title">Divisi</h5>
                         </a>
