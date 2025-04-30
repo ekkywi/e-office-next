@@ -52,4 +52,9 @@ class Navigation extends Controller
     {
         return view('content.eof-division');
     }
+
+    public function showEofSection()
+    {
+        return view('content.eof-section');
+    }
 }

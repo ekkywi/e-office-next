@@ -27,7 +27,7 @@
 
                 <div class="col-lg-3 col-md-6 col-sm-12">
                     <div class="card card-menu">
-                        <a class="card-body text-center" href="{{ url("eof/maintenance/bagian") }}">
+                        <a class="card-body text-center" href="{{ url("eof/maintenance/organization/section") }}">
                             <i class="fas fa-building custom-icon-size mb-3"></i>
                             <h5 class="card-title">Bagian</h5>
                         </a>
@@ -36,7 +36,7 @@
 
                 <div class="col-lg-3 col-md-6 col-sm-12">
                     <div class="card card-menu">
-                        <a class="card-body text-center" href="{{ url("eof/maintenance/jabatan") }}">
+                        <a class="card-body text-center" href="{{ url("eof/maintenance/organization/position") }}">
                             <i class="fas fa-briefcase custom-icon-size mb-3"></i>
                             <h5 class="card-title">Jabatan</h5>
                         </a>
