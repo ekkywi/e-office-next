@@ -6,16 +6,17 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/login', [App\Http\Controllers\Main\Navigation::class, 'showLogin'])->name('login');
 
-Route::get('/eof-dashboard', [App\Http\Controllers\Main\Navigation::class, 'showEofDashboard'])->name('eof-dashboard');
-Route::get('/eof-application', [App\Http\Controllers\Main\Navigation::class, 'showEofApplication'])->name('eof-application');
-Route::get('/eof-setting', [App\Http\Controllers\Main\Navigation::class, 'showEofSetting'])->name('eof-setting');
-Route::get('/eof-help', [App\Http\Controllers\Main\Navigation::class, 'showEofHelp'])->name('eof-help');
+Route::prefix('eof')->name('eof')->group(function () {
+    Route::get('/login', [App\Http\Controllers\Main\Navigation::class, 'showLogin'])->name('login');
+    Route::get('/dashboard', [App\Http\Controllers\Main\Navigation::class, 'showEofDashboard'])->name('dashboard');
+    Route::get('/application', [App\Http\Controllers\Main\Navigation::class, 'showEofApplication'])->name('application');
+    Route::get('setting', [App\Http\Controllers\Main\Navigation::class, 'showEofSetting'])->name('setting');
+    Route::get('/help', [App\Http\Controllers\Main\Navigation::class, 'showEofHelp'])->name('help');
+    Route::get('/maintenance', [App\Http\Controllers\Main\Navigation::class, 'showEofMaintenance'])->name('maintenance');
 
-Route::prefix('eof-maintenance')->name('eof-maintenance')->group(function () {
-    Route::get('/', [App\Http\Controllers\Main\Navigation::class, 'showEofMaintenance'])->name('eof-maintenance');
-    Route::get('/account', [App\Http\Controllers\Main\Navigation::class, 'showEofAccount'])->name('eof-account');
-    Route::get('/organization', [App\Http\Controllers\Main\Navigation::class, 'showEofOrganization'])->name('eof-organization');
-    Route::get('/organization', [App\Http\Controllers\Main\Navigation::class, 'showEofOrganization'])->name('eof-organization');
+    Route::prefix('maintenance')->name('maintenance.')->group(function () {
+        Route::get('/account', [App\Http\Controllers\Main\Navigation::class, 'showEofAccount'])->name('account');
+        Route::get('/organization', [App\Http\Controllers\Main\Navigation::class, 'showEofOrganization'])->name('organization');
+    });
 });

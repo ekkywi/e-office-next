@@ -9,7 +9,7 @@
 
                 <div class="col-lg-3 col-md-6 col-sm-12">
                     <div class="card card-menu">
-                        <a class="card-body text-center text-dark" href="{{ url("eof-maintenance") }}">
+                        <a class="card-body text-center text-dark" href="{{ url("eof/maintenance") }}">
                             <i class="fas fa-circle-chevron-left custom-icon-size mb-3 text-dark"></i>
                             <h5 class="card-title">Kembali</h5>
                         </a>
@@ -18,7 +18,7 @@
 
                 <div class="col-lg-3 col-md-6 col-sm-12">
                     <div class="card card-menu">
-                        <a class="card-body text-center" href="{{ url("maintenance/user") }}">
+                        <a class="card-body text-center" href="{{ url("eof/maintenance/user") }}">
                             <i class="fas fa-users custom-icon-size mb-3"></i>
                             <h5 class="card-title">Pengguna</h5>
                         </a>
@@ -27,7 +27,7 @@
 
                 <div class="col-lg-3 col-md-6 col-sm-12">
                     <div class="card card-menu">
-                        <a class="card-body text-center" href="{{ url("maintenance/aktivasi") }}">
+                        <a class="card-body text-center" href="{{ url("eof/maintenance/aktivasi") }}">
                             <i class="fas fa-person-circle-check custom-icon-size mb-3"></i>
                             <h5 class="card-title">Aktivasi</h5>
                         </a>
@@ -36,9 +36,18 @@
 
                 <div class="col-lg-3 col-md-6 col-sm-12">
                     <div class="card card-menu">
-                        <a class="card-body text-center" href="{{ url("maintenance/token") }}">
+                        <a class="card-body text-center" href="{{ url("eof/maintenance/token") }}">
                             <i class="fas fa-key custom-icon-size mb-3"></i>
                             <h5 class="card-title">Token</h5>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-6 col-sm-12">
+                    <div class="card card-menu">
+                        <a class="card-body text-center" href="{{ url("eof/maintenance/role") }}">
+                            <i class="fas fa-user-shield custom-icon-size mb-3"></i>
+                            <h5 class="card-title">Peran</h5>
                         </a>
                     </div>
                 </div>

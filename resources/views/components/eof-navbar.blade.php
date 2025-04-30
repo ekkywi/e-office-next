@@ -1,6 +1,6 @@
     <div class="navbar-bg"></div>
     <nav class="navbar navbar-expand-lg main-navbar sticky-top">
-        <a class="navbar-brand sidebar-gone-hide" href="{{ url("eof-dashboard") }}">E-Office</a>
+        <a class="navbar-brand sidebar-gone-hide" href="{{ url("eof/dashboard") }}">E-Office</a>
         <a class="nav-link sidebar-gone-show" data-toggle="sidebar" href="#"><i class="fas fa-bars"></i></a>
         <div class="nav-collapse">
             <a class="sidebar-gone-show nav-collapse-toggle nav-link" href="#">
@@ -81,11 +81,11 @@
         <nav class="navbar navbar-secondary navbar-expand-lg">
             <div class="container d-flex justify-content-center">
                 <ul class="navbar-nav">
-                    <li class="nav-item {{ Request::is("eof-dashboard") ? "active" : "" }}"><a class="nav-link" href="{{ url("eof-dashboard") }}"><i class="fa fa-rocket"></i><span>Dashboard</span></a></li>
-                    <li class="nav-item {{ Request::is("eof-application") ? "active" : "" }}"><a class="nav-link" href="{{ url("eof-application") }}"><i class="fa fa-fire-flame-curved"></i><span>Aplikasi</span></a></li>
-                    <li class="nav-item {{ Request::is("eof-setting") || Request::is("eof-setting/*") ? "active" : "" }}"><a class="nav-link" href="{{ url("eof-setting") }}"><i class="fa fa-cog"></i><span>Pengaturan</span></a></li>
-                    <li class="nav-item {{ Request::is("eof-help") || Request::is("eof-help/*") ? "active" : "" }}"><a class="nav-link" href="{{ url("eof-help") }}"><i class="fa fa-circle-question"></i><span>Bantuan</span></a></li>
-                    <li class="nav-item {{ Request::is("eof-maintenance") || Request::is("eof-maintenance/*") ? "active" : "" }}"><a class="nav-link" href="{{ url("eof-maintenance") }}"><i class="fa fa-wrench"></i><span>Pemeliharaan</span></a></li>
+                    <li class="nav-item {{ Request::is("eof/dashboard") ? "active" : "" }}"><a class="nav-link" href="{{ url("eof/dashboard") }}"><i class="fa fa-rocket"></i><span>Dashboard</span></a></li>
+                    <li class="nav-item {{ Request::is("eof/application") ? "active" : "" }}"><a class="nav-link" href="{{ url("eof/application") }}"><i class="fa fa-fire-flame-curved"></i><span>Aplikasi</span></a></li>
+                    <li class="nav-item {{ Request::is("eof/setting") || Request::is("eof/setting/*") ? "active" : "" }}"><a class="nav-link" href="{{ url("eof/setting") }}"><i class="fa fa-cog"></i><span>Pengaturan</span></a></li>
+                    <li class="nav-item {{ Request::is("eof/help") || Request::is("eof/help/*") ? "active" : "" }}"><a class="nav-link" href="{{ url("eof/help") }}"><i class="fa fa-circle-question"></i><span>Bantuan</span></a></li>
+                    <li class="nav-item {{ Request::is("eof/maintenance") || Request::is("eof/maintenance/*") ? "active" : "" }}"><a class="nav-link" href="{{ url("eof/maintenance") }}"><i class="fa fa-wrench"></i><span>Pemeliharaan</span></a></li>
                 </ul>
             </div>
         </nav>

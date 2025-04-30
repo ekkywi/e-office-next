@@ -69,7 +69,7 @@
                         </div>
                         <div class="mt-5 text-muted text-center">
                             <p></p>
-                            Lupas password? Reset password <a href="register">disini</a><br>
+                            Lupa password? Reset<a href="register"> disini</a><br>
                         </div>
                         <div class="simple-footer">
                             &copy; 2025 E-Office - All Rights Reserved

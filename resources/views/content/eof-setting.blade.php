@@ -11,7 +11,7 @@
 
                 <div class="col-lg-3 col-md-6 col-sm-12">
                     <div class="card card-menu">
-                        <a class="card-body text-center" href="{{ url("setting/profile") }}">
+                        <a class="card-body text-center" href="{{ url("eof/setting/profile") }}">
                             <i class="fas fa-id-badge custom-icon-size mb-3"></i>
                             <h5 class="card-title">Profil</h5>
                         </a>
@@ -20,7 +20,7 @@
 
                 <div class="col-lg-3 col-md-6 col-sm-12">
                     <div class="card card-menu">
-                        <a class="card-body text-center" href="{{ url("setting/change-password") }}">
+                        <a class="card-body text-center" href="{{ url("eof/setting/change-password") }}">
                             <i class="fas fa-key custom-icon-size mb-3"></i>
                             <h5 class="card-title">Ubah Password</h5>
                         </a>
