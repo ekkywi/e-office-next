@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Main;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class Navigation extends Controller
+class NavigationController extends Controller
 {
     public function showLogin()
     {
@@ -45,11 +45,6 @@ class Navigation extends Controller
     public function showEofOrganization()
     {
         return view('content.eof-organization');
-    }
-
-    public function showEofDivision()
-    {
-        return view('content.eof-division');
     }
 
     public function showEofSection()
