@@ -6,17 +6,29 @@
 
 @section("content")
     <section class="section">
-        <div class="section-header">
-            <h1>Jabatan</h1>
-            <div class="section-header-breadcrumb">
-                <div class="breadcrumb-item"><a href="{{ url("eof/dashboard") }}"><i class="fas fa-rocket"></i> E-Office</a></div>
-                <div class="breadcrumb-item"><a href="{{ url("eof/maintenance") }}"><i class="fas fa-wrench"></i> Maintenance</a></div>
-                <div class="breadcrumb-item"><a href="{{ url("eof/maintenance/organization") }}"><i class="fas fa-people-group"></i> Organization</a></div>
-                <div class="breadcrumb-item active"><i class="fas fa-briefcase"></i> Jabatan</div>
-            </div>
-        </div>
-
         <div class="section-body">
+
+            @if (session("success"))
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    {{ session("success") }}
+                    <button aria-label="Close" class="close" data-dismiss="alert" type="button">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            @endif
+            @if ($errors->any())
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                    <button aria-label="Close" class="close" data-dismiss="alert" type="button">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            @endif
+
             <div class="row">
                 <div class="col-12">
                     <div class="card">
@@ -32,8 +44,15 @@
                                     </div>
                                 </form>
                             </div>
-                            <div>
-                                <button class="btn btn-primary ml-2" data-target="#addJabatanModal" data-toggle="modal">Tambah Data</button>
+                            <div class="card-header-action ml-3">
+                                <button class="btn btn-icon icon-left btn-primary mr-2" data-target="#addPositionModal" data-toggle="modal">
+                                    <i class="fas fa-plus"></i> Tambah Divisi
+                                </button>
+                            </div>
+                            <div class="card-header-action ml-2">
+                                <a class="btn btn-icon icon-left btn-primary" href="{{ url("eof/organization") }}">
+                                    <i class="fas fa-circle-chevron-left"></i> Kembali
+                                </a>
                             </div>
                         </div>
                         <div class="card-body p-0">
@@ -41,49 +60,66 @@
                                 <table class="table table-border text-center table-hover">
                                     <thead class="thead-light">
                                         <tr>
-                                            <th>No</th>
-                                            <th>Nama Jabatan</th>
+                                            <th>Nama</th>
+                                            <th>Tag</th>
+                                            <th>Warna Tag</th>
+                                            <th>Jumlah Pegawai</th>
                                             <th>Kelola</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-
+                                        @foreach ($positions as $position)
+                                            <tr>
+                                                <td>{{ $position->name }}</td>
+                                                <td>{{ $position->tag }}</td>
+                                                <td>
+                                                    <span class="badge" style="color: {{ $position->color }};">{{ $position->tag }}</span>
+                                                </td>
+                                                </td>
+                                                <td>{{ $position->users_count }}</td>
+                                                <td>
+                                                    <button class="btn btn-info btn-sm" data-color="{{ $position->color }}" data-id="{{ $position->id }}" data-name="{{ $position->name }}" data-tag="{{ $position->tag }}" data-target="#editPositionModal" data-toggle="modal">
+                                                        <i class="fas fa-edit"></i>
+                                                    </button>
+                                                    <button class="btn btn-danger btn-sm btn-delete-position" data-id="{{ $position->id }}">
+                                                        <i class="fas fa-trash"></i>
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                        @endforeach
                                     </tbody>
                                 </table>
                             </div>
                         </div>
-
-                        {{-- Pagination --}}
-                        <div class="card-body">
-                            <nav aria-label="...">
-                                <ul class="pagination justify-content-center">
-
-                                </ul>
-                            </nav>
-                        </div>
-
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Modal Tambah Jabatan -->
-    <div aria-hidden="true" aria-labelledby="addJabatanModalLabel" class="modal fade" id="addJabatanModal" role="dialog" tabindex="-1">
+    <div aria-hidden="true" aria-labelledby="addPositionModalLabel" class="modal fade" id="addPositionModal" role="dialog" tabindex="-1">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="addJabatanModalLabel">Tambah Data Jabatan</h5>
+                    <h5 class="modal-title" id="addPositionModalLabel">Tambah Data Jabatan</h5>
                     <button aria-label="Close" class="close" data-dismiss="modal" type="button">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <form action="#" method="POST">
+                <form action="{{ route("eof.position.store") }}" method="POST">
                     @csrf
                     <div class="modal-body">
                         <div class="form-group">
-                            <label for="nama_jabatan">Nama Jabatan</label>
-                            <input class="form-control" id="nama_jabatan" name="nama_jabatan" required type="text">
+                            <label for="name">Nama Jabatan</label>
+                            <input class="form-control" id="name" name="name" required type="text">
+                        </div>
+                        <div class="form-group">
+                            <label for="tag">Tag Jabatan</label>
+                            <input class="form-control" id="tag" name="tag" required type="text">
+                        </div>
+                        <div class="form-group">
+                            <label for="color">Warna Tag</label>
+                            <input class="form-control" id="color" name="color" type="color" value="#000000">
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -95,42 +131,69 @@
         </div>
     </div>
 
-    <!-- Modal Edit Jabatan -->
-    <div aria-hidden="true" aria-labelledby="editJabatanModalLabel" class="modal fade" id="editJabatanModal" role="dialog" tabindex="-1">
+    <div aria-hidden="true" aria-labelledby="editPositionModalLabel" class="modal fade" id="editPositionModal" role="dialog" tabindex="-1">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="editJabatanModalLabel">Edit Data Jabatan</h5>
+                    <h5 class="modal-title" id="editPositionModalLabel">Edit Data Jabatan</h5>
                     <button aria-label="Close" class="close" data-dismiss="modal" type="button">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <form action="#" method="POST">
+                <form action="{{ route("eof.position.update") }}" method="POST">
                     @csrf
+                    @method("PUT")
+                    <input id="edit-id" name="id" type="hidden">
                     <div class="modal-body">
-                        <input id="edit_jabatan_id" name="id" type="hidden">
                         <div class="form-group">
-                            <label for="edit_nama_jabatan">Nama Jabatan</label>
-                            <input class="form-control" id="edit_nama_jabatan" name="nama_jabatan" required type="text">
+                            <label for="edit-name">Nama Jataban</label>
+                            <input class="form-control" id="edit-name" name="name" required type="text">
+                        </div>
+                        <div class="form-group">
+                            <label for="edit-tag">Tag Jabatan</label>
+                            <input class="form-control" id="edit-tag" name="tag" required type="text">
+                        </div>
+                        <div class="form-group">
+                            <label for="edit-color">Warna Tag</label>
+                            <input class="form-control" id="edit-color" name="color" type="color">
                         </div>
                     </div>
                     <div class="modal-footer">
                         <button class="btn btn-secondary" data-dismiss="modal" type="button">Batal</button>
-                        <button class="btn btn-primary" type="submit">Simpan</button>
+                        <button class="btn btn-primary" type="submit">Simpan Perubahan</button>
                     </div>
                 </form>
             </div>
         </div>
     </div>
 
-    <!-- Delete Form -->
-    <form id="deleteForm" method="POST" style="display: none;">
-        @csrf
-    </form>
+    <div aria-hidden="true" aria-labelledby="deletePositionModalLabel" class="modal fade" id="deletePositionModal" role="dialog" tabindex="-1">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="deletePositionModalLabel">Konfirmasi Hapus</h5>
+                    <button aria-label="Close" class="close" data-dismiss="modal" type="button">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form action="{{ route("eof.position.destroy") }}" method="POST">
+                    @csrf
+                    @method("DELETE")
+                    <input id="delete-id" name="id" type="hidden">
+                    <div class="modal-body">
+                        <p>Apakah Anda yakin ingin menghapus jabatan ini?</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-secondary" data-dismiss="modal" type="button">Batal</button>
+                        <button class="btn btn-danger" type="submit">Hapus</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 @endsection
 
 @section("script")
-    {{-- JS Libraies --}}
     <script src="{{ asset("modules/jquery/jquery.min.js") }}"></script>
     <script src="{{ asset("modules/popper/popper.js") }}"></script>
     <script src="{{ asset("modules/tooltip/tooltip.js") }}"></script>
@@ -138,97 +201,29 @@
     <script src="{{ asset("modules/nicescroll/jquery.nicescroll.min.js") }}"></script>
     <script src="{{ asset("modules/moment/moment.min.js") }}"></script>
     <script src="{{ asset("modules/sweetalert/sweetalert.min.js") }}"></script>
-
-    {{-- Template JS File --}}
     <script src="{{ asset("js/scripts.js") }}"></script>
     <script src="{{ asset("js/custom.js") }}"></script>
     <script src="{{ asset("js/stisla.js") }}"></script>
-
-    {{-- Function Script --}}
     <script>
-        $(document).ready(function() {
-            $('.btn-edit-jabatan').on('click', function() {
-                var id = $(this).data('id');
-                var name = $(this).data('name');
-                $('#edit_jabatan_id').val(id);
-                $('#edit_nama_jabatan').val(name);
-            });
+        $('#editPositionModal').on('show.bs.modal', function(event) {
+            var button = $(event.relatedTarget);
+            var id = button.data('id');
+            var name = button.data('name');
+            var tag = button.data('tag');
+            var color = button.data('color');
+
+            var modal = $(this);
+            modal.find('#edit-id').val(id);
+            modal.find('#edit-name').val(name);
+            modal.find('#edit-tag').val(tag);
+            modal.find('#edit-color').val(color);
         });
     </script>
     <script>
-        $(document).ready(function() {
-            $('.btn-delete-jabatan').on('click', function() {
-                var id = $(this).data('id');
-                var name = $(this).data('name');
-
-                swal({
-                    title: "Apakah Anda Yakin?",
-                    text: "Data Jabatan " + name + " akan dihapus",
-                    icon: "warning",
-                    buttons: {
-                        cancel: {
-                            text: "Batal",
-                            value: null,
-                            visible: true,
-                            className: "btn btn-secondary",
-                            closeModal: true
-                        },
-                        confirm: {
-                            text: "Hapus",
-                            value: true,
-                            visible: true,
-                            className: "btn btn-primary",
-                            closeModal: true
-                        }
-                    },
-                    dangerMode: true
-                }).then((willDelete) => {
-                    if (willDelete) {
-                        var form = $('#deleteForm');
-                        form.attr('action', '/maintenance/jabatan/delete/' + id);
-                        form.submit();
-                    }
-                });
-            });
-        });
-    </script>
-    <script>
-        $(document).ready(function() {
-            // Handle success message
-            @if (session("success"))
-                swal({
-                    icon: "success",
-                    title: "Berhasil!",
-                    text: "{{ session("success") }}",
-                    type: "success",
-                    timer: 1500,
-                    button: false
-                });
-            @endif
-
-            // Handle validation errors
-            @if ($errors->any())
-                swal({
-                    icon: "error",
-                    title: "Gagal!",
-                    text: "{!! implode('\n', $errors->all()) !!}",
-                    type: "error",
-                    timer: 1500,
-                    buttons: false
-                });
-            @endif
-
-            // Handle error message
-            @if (session("error"))
-                swal({
-                    icon: "error",
-                    title: "Sistem Gagal!",
-                    text: "{{ session("error") }}",
-                    type: "error",
-                    timer: 1500,
-                    buttons: false
-                });
-            @endif
+        $(document).on('click', '.btn-delete-position', function() {
+            var id = $(this).data('id');
+            $('#delete-id').val(id);
+            $('#deletePositionModal').modal('show');
         });
     </script>
 @endsection

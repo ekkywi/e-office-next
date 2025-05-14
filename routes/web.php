@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Main\NavigationController;
 use App\Http\Controllers\Organization\DivisionController;
 use App\Http\Controllers\Organization\SectionController;
+use App\Http\Controllers\Organization\PositionController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -30,5 +31,12 @@ Route::prefix('eof')->name('eof.')->group(function () {
         Route::post('/', [SectionController::class, 'store'])->name('store');
         Route::put('/', [SectionController::class, 'update'])->name('update');
         Route::delete('/', [SectionController::class, 'destroy'])->name('destroy');
+    });
+
+    Route::prefix('position')->name('position.')->group(function () {
+        Route::get('/', [PositionController::class, 'showEofPosition'])->name('position');
+        Route::post('/', [PositionController::class, 'store'])->name('store');
+        Route::put('/', [PositionController::class, 'update'])->name('update');
+        Route::delete('/', [PositionController::class, 'destroy'])->name('destroy');
     });
 });

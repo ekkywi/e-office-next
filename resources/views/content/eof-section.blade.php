@@ -7,6 +7,7 @@
 @section("content")
     <section class="section">
         <div class="section-body">
+
             @if (session("success"))
                 <div class="alert alert-success alert-dismissible fade show" role="alert">
                     {{ session("success") }}
@@ -15,6 +16,19 @@
                     </button>
                 </div>
             @endif
+            @if ($errors->any())
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                    <button aria-label="Close" class="close" data-dismiss="alert" type="button">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            @endif
+
             <div class="row">
                 <div class="col-12">
                     <div class="card">
@@ -83,7 +97,6 @@
         </div>
     </section>
 
-    <!-- Modal Tambah Divisi -->
     <div aria-hidden="true" aria-labelledby="addSectionModalLabel" class="modal fade" id="addSectionModal" role="dialog" tabindex="-1">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -118,7 +131,6 @@
         </div>
     </div>
 
-    <!-- Modal Edit Divisi -->
     <div aria-hidden="true" aria-labelledby="editSectionModalLabel" class="modal fade" id="editSectionModal" role="dialog" tabindex="-1">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -155,7 +167,6 @@
         </div>
     </div>
 
-    <!-- Modal Konfirmasi Hapus -->
     <div aria-hidden="true" aria-labelledby="deleteSectionModalLabel" class="modal fade" id="deleteSectionModal" role="dialog" tabindex="-1">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -183,7 +194,6 @@
 @endsection
 
 @section("script")
-    {{-- JS Libraies --}}
     <script src="{{ asset("modules/jquery/jquery.min.js") }}"></script>
     <script src="{{ asset("modules/popper/popper.js") }}"></script>
     <script src="{{ asset("modules/tooltip/tooltip.js") }}"></script>
@@ -191,13 +201,9 @@
     <script src="{{ asset("modules/nicescroll/jquery.nicescroll.min.js") }}"></script>
     <script src="{{ asset("modules/moment/moment.min.js") }}"></script>
     <script src="{{ asset("modules/sweetalert/sweetalert.min.js") }}"></script>
-
-    {{-- Template JS File --}}
     <script src="{{ asset("js/scripts.js") }}"></script>
     <script src="{{ asset("js/custom.js") }}"></script>
     <script src="{{ asset("js/stisla.js") }}"></script>
-
-    {{-- Function Script --}}
     <script>
         $('#editSectionModal').on('show.bs.modal', function(event) {
             var button = $(event.relatedTarget);

@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Division;
 
 class DivisionController extends Controller
+
 {
     public function showEofDivision()
     {
@@ -36,22 +37,22 @@ class DivisionController extends Controller
     {
         $request->validate([
             'id' => 'required|exists:divisions,id',
-            'name' => 'required|string|max:255',
-            'tag' => 'required|string|max:255',
+            'name' => 'required|string|max:255|unique:divisions,name,' . $request->id,
+            'tag' => 'required|string|max:255|unique:divisions,tag,' . $request->id,
             'color' => 'required|string|max:7',
         ]);
-
         try {
             $division = Division::findOrFail($request->id);
 
-            $division->name = $request->name;
-            $division->tag = $request->tag;
-            $division->color = $request->color;
-            $division->save();
+            $division->update([
+                'name' => $request->name,
+                'tag' => $request->tag,
+                'color' => $request->color,
+            ]);
 
-            return redirect()->route('eof.division.division')->with('success', 'Data divisi berhasil diperbarui.');
+            return redirect()->back()->with('success', 'Data divisi berhasil diperbarui.');
         } catch (\Exception $e) {
-            return redirect()->route('eof.division.division')->with('error', 'Terjadi kesalahan saat memperbarui data divisi.');
+            return redirect()->back()->with('error', 'Terjadi kesalahan saat memperbarui data divisi.');
         }
     }
 
