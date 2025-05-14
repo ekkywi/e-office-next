@@ -29,25 +29,46 @@ class DivisionController extends Controller
             'color' => $request->color,
         ]);
 
-        return redirect()->back()->with('success', 'Data Divisi berhasil ditambahkan.');
+        return redirect()->back()->with('success', 'Berhasil menambahkan data divisi.');
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
         $request->validate([
-            'name' => 'required|string|max:255|unique:divisions,name,' . $id,
-            'tag' => 'required|string|max:10|unique:divisions,tag,' . $id,
-            'color' => 'required|string|max:7|regex:/^#[0-9A-Fa-f]{6}$/',
+            'id' => 'required|exists:divisions,id',
+            'name' => 'required|string|max:255',
+            'tag' => 'required|string|max:255',
+            'color' => 'required|string|max:7',
         ]);
 
-        $division = Division::findOrFail($id);
+        try {
+            $division = Division::findOrFail($request->id);
 
-        $division->update([
-            'name' => $request->name,
-            'tag' => $request->tag,
-            'color' => $request->color,
+            $division->name = $request->name;
+            $division->tag = $request->tag;
+            $division->color = $request->color;
+            $division->save();
+
+            return redirect()->route('eof.division.division')->with('success', 'Data divisi berhasil diperbarui.');
+        } catch (\Exception $e) {
+            return redirect()->route('eof.division.division')->with('error', 'Terjadi kesalahan saat memperbarui data divisi.');
+        }
+    }
+
+    public function destroy(Request $request)
+    {
+        $request->validate([
+            'id' => 'required|exists:divisions,id',
         ]);
 
-        return redirect()->back()->with('success', 'Data Divisi berhasil diperbarui.');
+        try {
+            $division = Division::findOrFail($request->id);
+
+            $division->delete();
+
+            return redirect()->route('eof.division.division')->with('success', 'Data divisi berhasil dihapus.');
+        } catch (\Exception $e) {
+            return redirect()->route('eof.division.division')->with('error', 'Terjadi kesalahan saat menghapus data divisi.');
+        }
     }
 }

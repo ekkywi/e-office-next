@@ -46,19 +46,4 @@ class NavigationController extends Controller
     {
         return view('content.eof-organization');
     }
-
-    public function showEofSection()
-    {
-        return view('content.eof-section');
-    }
-
-    public function showEofPosition()
-    {
-        return view('content.eof-position');
-    }
-
-    public function showEofUser()
-    {
-        return view('content.eof-user');
-    }
 }
